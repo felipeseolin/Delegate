@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  delegate
+//  Delegate
 //
 //  Created by Felipe Seolin Bento on 09/10/21.
 //

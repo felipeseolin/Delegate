@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  delegate
+//  Delegate
 //
 //  Created by Felipe Seolin Bento on 09/10/21.
 //
@@ -15,8 +15,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        // This Delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        UIBarButtonItem.appearance().tintColor = UIColor.red
+        
+        let rootViewControoler = TaskFormViewController()
+//        let rootViewControoler = DrawResultViewController()
+//        rootViewControoler.participants = ["Felipe", "Fernando", "Francisco", "Fabiola"]
+//        rootViewControoler.responsibilities = [
+//            Responsibility(name: "Salgadinho", amount: 2),
+//            Responsibility(name: "Refri", amount: 2)
+//        ]
+        let navController = UINavigationController(rootViewController: rootViewControoler)
+        
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = navController
+        
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

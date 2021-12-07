@@ -38,7 +38,7 @@ class ParticipantFormViewController: UIViewController {
     }
     // MARK: - View setups
     private func setupNavigationBar() {
-        view.backgroundColor = .white
+        view.backgroundColor = Asset.Colors.background.color
         self.title = "Participantes"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -137,14 +137,19 @@ class ParticipantFormViewController: UIViewController {
     }
     // MARK: - Return view
     private func newParticipant(n: Int) -> UIStackView {
-        let responsibilityLabel = UILabel()
-        responsibilityLabel.text = "Participante \(n)"
+        let participantLabel = UILabel()
+        participantLabel.text = "Participante \(n)"
+        participantLabel.textColor = Asset.Colors.text.color
         
-        let responsibilityTF = UITextField()
-        responsibilityTF.borderStyle = .roundedRect
-        responsibilityTF.placeholder = "Ex.: Felipe"
+        let participantTF = UITextField()
+        participantTF.borderStyle = .roundedRect
+        participantTF.placeholder = "Ex.: Felipe"
+        participantTF.backgroundColor = Asset.Colors.background.color
+        participantTF.tintColor = Asset.Colors.text.color
+        participantTF.textColor = Asset.Colors.text.color
+        participantTF.delegate = self
         
-        let stackView = UIStackView(arrangedSubviews: [responsibilityLabel, responsibilityTF])
+        let stackView = UIStackView(arrangedSubviews: [participantLabel, participantTF])
         stackView.axis = .vertical
         stackView.spacing = 5
         

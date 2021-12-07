@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This Delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        UIBarButtonItem.appearance().tintColor = UIColor.red
+        UIBarButtonItem.appearance().tintColor = Asset.Colors.purple.color
         
         let rootViewControoler = TaskFormViewController()
 //        let rootViewControoler = DrawResultViewController()

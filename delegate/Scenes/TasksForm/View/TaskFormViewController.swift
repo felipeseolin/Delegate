@@ -36,6 +36,8 @@ class TaskFormViewController: UIViewController {
         button.configuration = configuration
         button.contentHorizontalAlignment = .left
         button.addTarget(self, action: #selector(self.addNewTask), for: .touchUpInside)
+        button.tintColor = Asset.Colors.purple.color
+        button.backgroundColor = Asset.Colors.background.color
         
         return button
     }()
@@ -43,12 +45,44 @@ class TaskFormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupEvents()
+        self.hideKeyboardWhenTappedAround()
         self.setupNavigationBar()
         self.setupViews()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    // MARK: - Events
+    private func setupEvents() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.addTaskButton.snp.removeConstraints()
+            self.addTaskButton.snp.makeConstraints { make -> Void in
+                make.trailing.equalTo(self.view).offset(-12)
+                make.leading.equalTo(self.view).offset(12)
+                make.bottom.equalTo(-keyboardSize.height)
+                make.height.equalTo(50)
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.addTaskButton.snp.removeConstraints()
+        self.addTaskButton.snp.makeConstraints { make -> Void in
+            make.trailing.equalTo(self.view).offset(-12)
+            make.leading.equalTo(self.view).offset(12)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+        }
+    }
     // MARK: - View setups
     private func setupNavigationBar() {
-        view.backgroundColor = .white
+        view.backgroundColor = Asset.Colors.background.color
         self.title = "Responsabilidades"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -220,11 +254,16 @@ class TaskFormViewController: UIViewController {
     private func responsibilityStack() -> UIStackView {
         let responsibilityLabel = UILabel()
         responsibilityLabel.text = "Responsabilidade"
+        responsibilityLabel.textColor = Asset.Colors.text.color
         
         let responsibilityTF = UITextField()
+        responsibilityTF.delegate = self
         responsibilityTF.borderStyle = .roundedRect
         responsibilityTF.placeholder = "Ex.: Salgado"
         responsibilityTF.tag = ViewTag.responsibilityTextField.rawValue
+        responsibilityTF.backgroundColor = Asset.Colors.background.color
+        responsibilityTF.tintColor = Asset.Colors.text.color
+        responsibilityTF.textColor = Asset.Colors.text.color
         
         let stackView = UIStackView(arrangedSubviews: [responsibilityLabel, responsibilityTF])
         stackView.axis = .vertical
@@ -236,12 +275,17 @@ class TaskFormViewController: UIViewController {
     private func responsibilityAmountStack() -> UIStackView {
         let responsibilityAmountLabel = UILabel()
         responsibilityAmountLabel.text = "Qtd"
+        responsibilityAmountLabel.textColor = Asset.Colors.text.color
         
         let responsibilityAmountTF = UITextField()
+        responsibilityAmountTF.delegate = self
         responsibilityAmountTF.borderStyle = .roundedRect
         responsibilityAmountTF.placeholder = "Ex.: 12"
         responsibilityAmountTF.keyboardType = .numberPad
         responsibilityAmountTF.tag = ViewTag.amountTextField.rawValue
+        responsibilityAmountTF.backgroundColor = Asset.Colors.background.color
+        responsibilityAmountTF.tintColor = Asset.Colors.text.color
+        responsibilityAmountTF.textColor = Asset.Colors.text.color
         
         let stackView = UIStackView(arrangedSubviews: [responsibilityAmountLabel, responsibilityAmountTF])
         stackView.axis = .vertical
@@ -259,7 +303,7 @@ class TaskFormViewController: UIViewController {
         let button = UIButton()
         button.setImage(UIImage(systemName: "trash"), for: .normal)
         button.addTarget(self, action: #selector(self.removeTask), for: .touchUpInside)
-        button.tintColor = .red
+        button.tintColor = Asset.Colors.purple.color
         
         button.snp.makeConstraints { make -> Void in
             make.height.equalTo(size)

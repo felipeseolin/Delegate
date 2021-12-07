@@ -27,16 +27,22 @@ class DrawResultViewController: UIViewController {
         
         return stackView
     }()
+    
+    private lazy var newDelegateBtn: UIButton = {
+        var btn = UIButton()
+        btn.setTitle("Nova delegação", for: .normal)
+        
+        return btn
+    }()
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setupNavigationBar()
         self.setupViews()
     }
     // MARK: - View setups
     private func setupNavigationBar() {
-        view.backgroundColor = .white
+        view.backgroundColor = Asset.Colors.background.color
         self.title = "Resultado"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -49,6 +55,7 @@ class DrawResultViewController: UIViewController {
         self.setupScrollView()
         self.setupResultStackView()
         self.setupResultView()
+        self.setupNewDelegateBtn()
     }
     
     private func setupScrollView() {
@@ -86,6 +93,10 @@ class DrawResultViewController: UIViewController {
             self.resultStackView.addArrangedSubview(UILabel())
         }
     }
+    
+    private func setupNewDelegateBtn() {
+        self.resultStackView.addSubview(newDelegateBtn)
+    }
     // MARK: - Actions
     @objc func exportResult() {
         var lastIndex = 0
@@ -114,7 +125,7 @@ class DrawResultViewController: UIViewController {
     
     private func participantLabel(participant: String) -> UILabel {
         let participantLabel = UILabel()
-        participantLabel.text = participant
+        participantLabel.text = "- \(participant)"
         
         return participantLabel
     }

@@ -14,6 +14,7 @@
 		B5239FA227121D650018BFDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5239FA127121D650018BFDE /* Assets.xcassets */; };
 		B5239FA527121D650018BFDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5239FA327121D650018BFDE /* LaunchScreen.storyboard */; };
 		B5239FB027121E990018BFDE /* TaskFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5239FAF27121E990018BFDE /* TaskFormViewController.swift */; };
+		B526CDF9275F994F00749EFE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526CDF8275F994F00749EFE /* UIViewController.swift */; };
 		B56357E72713CB3A00102CF9 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B56357E62713CB3A00102CF9 /* swiftgen.yml */; };
 		B56357E92713CB6500102CF9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = B56357E82713CB6500102CF9 /* Podfile */; };
 		B56357ED2713D05D00102CF9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56357EC2713D05D00102CF9 /* Colors.xcassets */; };
@@ -36,8 +37,9 @@
 		B5239FA427121D650018BFDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5239FA627121D650018BFDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5239FAF27121E990018BFDE /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
+		B526CDF8275F994F00749EFE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B56357E62713CB3A00102CF9 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
-		B56357E82713CB6500102CF9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		B56357E82713CB6500102CF9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B56357EC2713D05D00102CF9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B5D57B622713D81800D9DDC2 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		B5D57B662713FD1C00D9DDC2 /* ParticipantFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantFormViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		B5239F9727121D620018BFDE /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
+				B526CDF7275F993D00749EFE /* Extensions */,
 				B5EF4C1027151A2C00A10A5E /* Utils */,
 				B5EF4C0A2714FE9B00A10A5E /* Models */,
 				B56357EE2713D07500102CF9 /* Generated */,
@@ -130,6 +133,14 @@
 				B5239FAF27121E990018BFDE /* TaskFormViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B526CDF7275F993D00749EFE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B526CDF8275F994F00749EFE /* UIViewController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B56357EE2713D07500102CF9 /* Generated */ = {
@@ -345,6 +356,7 @@
 				B5EF4C1327151A3C00A10A5E /* AlertUtils.swift in Sources */,
 				B5D57B672713FD1C00D9DDC2 /* ParticipantFormViewController.swift in Sources */,
 				B5D57B632713D81800D9DDC2 /* XCAssets+Generated.swift in Sources */,
+				B526CDF9275F994F00749EFE /* UIViewController.swift in Sources */,
 				B5239FB027121E990018BFDE /* TaskFormViewController.swift in Sources */,
 				B5239F9D27121D620018BFDE /* ViewController.swift in Sources */,
 				B5EF4C0E2715027D00A10A5E /* Responsibility.swift in Sources */,
@@ -499,6 +511,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -528,6 +541,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
